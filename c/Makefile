@@ -1,11 +1,11 @@
-# $Header: /home/cjm/cvs/libdprt-loci/c/Makefile,v 1.1 2025-02-04 16:20:02 cjm Exp $
+# $Header: /home/cjm/cvs/libdprt-loci/c/Makefile,v 1.2 2025-02-04 16:33:31 cjm Exp $
 
 include	../../../Makefile.common
 include	../../Makefile.common
 include	../Makefile.common
 
 LIBNAME			= $(LIBDPRT_HOME)_$(LOCI_HOME)
-INCDIR 			= $(LIBDPRT_SPRAT_SRC_HOME)/include
+INCDIR 			= $(LIBDPRT_LOCI_SRC_HOME)/include
 CCDIMAGERINCDIR		= $(LIBDPRT_SRC_HOME)/ccd_dprt
 LTFILENAMESINCDIR 	= $(LT_SRC_HOME)/lt_filenames
 OBJECTINCDIR		= $(LIBDPRT_SRC_HOME)/object/include
