@@ -12,4 +12,4 @@ The repository should be installed inside the libdprt directory in an LT develop
 - LT Development environment
 - lt_filenames (http://github.com/LivTel/lt_filenames) Filename support for the data pipeline.
 - ccd_dprt (http://github.com/LivTel/ccd_dprt) The main data pipeline codebase.
-- jni_general (http://github.com/LivTel/jni_general) Generic JNI 'glue' routines.
+- jni_general (http://github.com/LivTel/libdprt-jni_general) Generic JNI 'glue' routines.
