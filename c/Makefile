@@ -1,4 +1,4 @@
-# $Header: /home/cjm/cvs/libdprt-loci/c/Makefile,v 1.2 2025-02-04 16:33:31 cjm Exp $
+# $Header: /home/cjm/cvs/libdprt-loci/c/Makefile,v 1.3 2025-02-06 11:11:56 cjm Exp $
 
 include	../../../Makefile.common
 include	../../Makefile.common
@@ -11,7 +11,8 @@ LTFILENAMESINCDIR 	= $(LT_SRC_HOME)/lt_filenames
 OBJECTINCDIR		= $(LIBDPRT_SRC_HOME)/object/include
 DOCSDIR 		= $(LIBDPRT_LOCI_DOC_HOME)/cdocs
 BINDIR			= $(LIBDPRT_LOCI_BIN_HOME)/c/$(HOSTTYPE)
-CFLAGS 			= -g $(CCHECKFLAG) -I$(INCDIR) -I$(CFITSIOINCDIR) -I$(JNIINCDIR) -I$(JNIMDINCDIR) \
+CFLAGS 			= -g $(CCHECKFLAG) $(SHARED_LIB_CFLAGS) -I$(INCDIR) -I$(CFITSIOINCDIR) \
+			-I$(JNIINCDIR) -I$(JNIMDINCDIR) \
 			-I$(JNIGENERALINCDIR) -I$(CCDIMAGERINCDIR) -I$(LTFILENAMESINCDIR) -I$(OBJECTINCDIR) \
 			-L$(LT_LIB_HOME)
 LINTFLAGS 		= -I$(INCDIR) -I$(JNIINCDIR) -I$(JNIMDINCDIR)
