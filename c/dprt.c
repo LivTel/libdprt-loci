@@ -75,7 +75,6 @@ int DpRt_Initialise(void)
 	if(fake == FALSE)
 	{
 		/* sort out libdprt pathname */
-		/*
 		if(!DpRt_JNI_Get_Property("dprt.path",&pathname))
 			return FALSE;
 		fprintf(stdout,"Calling DpRt set path routine (dprt_set_path(%s)).\n",pathname);
@@ -90,9 +89,7 @@ int DpRt_Initialise(void)
 		}
 		if(pathname != NULL)
 		free(pathname);
-		*/
 		/* call real initialisation routine */
-		/*
 		fprintf(stdout,"Calling DpRt initialisation routine (dprt_init).\n");
 		retval = dprt_init();
 		fprintf(stdout,"DpRt initialisation routine (dprt_init) returned %d.\n",retval);
@@ -102,7 +99,6 @@ int DpRt_Initialise(void)
 			strcpy(DpRt_JNI_Error_String,dprt_err_str);
 			return FALSE;
 		}
-		*/
 	}
 	return TRUE;
 }
@@ -124,7 +120,6 @@ int DpRt_Shutdown(void)
 	fprintf(stdout,"DpRt_Shutdown:Fake:%d\n",fake);
 	if(fake == FALSE)
 	{
-		/*
 		fprintf(stdout,"Calling DpRt shutdown routine (dprt_close_down).\n");
 		retval = dprt_close_down();
 		fprintf(stdout,"DpRt shutdown routine (dprt_lose_down) returned %d.\n",retval);
@@ -134,7 +129,6 @@ int DpRt_Shutdown(void)
 			strcpy(DpRt_JNI_Error_String,dprt_err_str);
 			return FALSE;
 		}
-		*/
 	}
 	return TRUE;
 }
@@ -180,9 +174,6 @@ int DpRt_Calibrate_Reduce(char *input_filename,char **output_filename,double *me
 	}
 	else
 	{
-		/*
-		fprintf(stdout,"DpRt_Calibrate_Reduce:Calling Calibration reduction routine (dprt_process(%d)).\n",
-			run_mode);
 		if(full_reduction)
 			run_mode = FULL_REDUCTION;
 		else
@@ -194,9 +185,7 @@ int DpRt_Calibrate_Reduce(char *input_filename,char **output_filename,double *me
 		fprintf(stdout,"DpRt_Calibrate_Reduce:Calibration reduction routine (dprt_process) returned %d.\n",
 			retval);
 		if(retval == TRUE)
-		*/
 		/* an error has occured */
-		/*
 		{
 			DpRt_JNI_Error_Number = dprt_err_int;
 			strcpy(DpRt_JNI_Error_String,dprt_err_str);
@@ -207,7 +196,6 @@ int DpRt_Calibrate_Reduce(char *input_filename,char **output_filename,double *me
 		}
 		(*mean_counts) = (double)l1mean;
 		(*peak_counts) = (double)l1counts;
-		*/
 	}
 	return TRUE;
 }
@@ -264,7 +252,6 @@ int DpRt_Expose_Reduce(char *input_filename,char **output_filename,double *seein
 	}
 	else
 	{
-		/*
 		if(full_reduction)
 			run_mode = FULL_REDUCTION;
 		else
@@ -294,7 +281,6 @@ int DpRt_Expose_Reduce(char *input_filename,char **output_filename,double *seein
 		(*photometricity) = (double)l1photom;
 		(*sky_brightness) = (double)l1skybright;
 		(*saturated) = (int)l1sat;
-		*/
 	}
 	return TRUE;
 }
@@ -335,7 +321,6 @@ int DpRt_Make_Master_Bias(char *directory_name)
 	{
 		if(make_master_bias)
 		{
-			/*
 			fprintf(stdout,"DpRt_Make_Master_Bias:Calling Make Master Bias routine (dprt_process).\n");
 			retval = dprt_process(directory_name,MAKE_BIAS,NULL,&l1mean,&l1seeing, 
 					      &l1xpix,&l1ypix,&l1counts,&l1sat,&l1photom,&l1skybright);
@@ -347,7 +332,6 @@ int DpRt_Make_Master_Bias(char *directory_name)
 				strcpy(DpRt_JNI_Error_String,dprt_err_str);
 				return FALSE;
 			}
-			*/
 		}
 		else
 		{
@@ -394,7 +378,6 @@ int DpRt_Make_Master_Flat(char *directory_name)
 	{
 		if(make_master_flat)
 		{
-			/*
 			fprintf(stdout,"DpRt_Make_Master_Flat:Calling Make Master Flat routine (dprt_process).\n");
 			retval = dprt_process(directory_name,MAKE_FLAT,NULL,&l1mean,&l1seeing, 
 					      &l1xpix,&l1ypix,&l1counts,&l1sat,&l1photom,&l1skybright);
@@ -406,7 +389,6 @@ int DpRt_Make_Master_Flat(char *directory_name)
 				strcpy(DpRt_JNI_Error_String,dprt_err_str);
 				return FALSE;
 			}
-			*/
 		}
 		else
 		{
@@ -522,7 +504,7 @@ static int Calibrate_Reduce_Fake(char *input_filename,char **output_filename,dou
 	if(data == NULL)
 	{
 		DpRt_JNI_Error_Number = 30;
-		sprintf(DpRt_JNI_Error_String,"Calibrate_Reduce_Fake(%s): Failed to allocate memory (%d,%d,%d).\n",
+		sprintf(DpRt_JNI_Error_String,"Calibrate_Reduce_Fake(%s): Failed to allocate memory (%d,%d,%lu).\n",
 			input_filename,naxis_one,naxis_two,naxis_one*naxis_two*sizeof(short));
 		return FALSE;
 	}
@@ -748,7 +730,7 @@ static int Expose_Reduce_Fake(char *input_filename,char **output_filename,double
 	if(data == NULL)
 	{
 		DpRt_JNI_Error_Number = 41;
-		sprintf(DpRt_JNI_Error_String,"Expose_Reduce_Fake(%s): Failed to allocate memory (%d,%d,%d).\n",
+		sprintf(DpRt_JNI_Error_String,"Expose_Reduce_Fake(%s): Failed to allocate memory (%d,%d,%lu).\n",
 			input_filename,naxis_one,naxis_two,naxis_one*naxis_two*sizeof(short));
 		return FALSE;
 	}
