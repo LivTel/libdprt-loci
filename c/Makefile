@@ -21,8 +21,7 @@ SRCS 			= dprt.c ngat_dprt_loci_DpRtLibrary.c
 HEADERS			= $(SRCS:%.c=%.h)
 OBJS			= $(SRCS:%.c=$(BINDIR)/%.o)
 DOCS 			= $(SRCS:%.c=$(DOCSDIR)/%.html)
-LIBS			= -lcfitsio -ldprt_object -ldprt_libfits -llt_filenames -ldprt_jni_general
-#-lloci_ccd_dprt
+LIBS			= -lcfitsio -lloci_ccd_dprt -ldprt_object -ldprt_libfits -llt_filenames -ldprt_jni_general
 
 top: shared docs
 
